@@ -69,16 +69,21 @@ const Signup = () => {
             </div>
           </div>
           <div className="w-[400px] my-5 space-y-4">
-            <Input size="sm" type="email" variant="bordered" label="Email" />
             <Input
               size="sm"
-              type="number"
+              type="password"
               variant="bordered"
-              label="Contact no"
+              label="Password"
+            />
+            <Input
+              size="sm"
+              type="password"
+              variant="bordered"
+              label="Re-write Password"
             />
           </div>
           <h1>
-            Already have an account? <Link href={"/login"}>Login</Link>
+            Already have an account? <Link className="text-blue-400 border-b-2 border-blue-400" href={"/api/auth/login"}>Login</Link>
           </h1>
           <Button className="w-[400px] bg-yellow-300 rounded-full mt-10">
             Send OTP
