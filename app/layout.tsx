@@ -1,11 +1,10 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-
 import { Providers } from "./providers";
-
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: {
@@ -33,28 +32,17 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head />
+
       <body
+        suppressHydrationWarning={true}
         className={clsx(
-          "bg-background font-sans antialiased",
+          "bg-background font-sans antialiased sm:flex h-screen",
           fontSans.variable
         )}
       >
-        {/* Sidebar */}
-        <div className="fixed bottom-0 w-full bg-gray-800 text-white sm:static sm:w-64 sm:h-full sm:bottom-auto sm:left-0 sm:top-0">
-          <div className="flex sm:flex-col justify-around sm:justify-start sm:items-start p-4 space-x-4 sm:space-x-0 sm:space-y-4">
-            <a href="/" className="hover:text-gray-400">
-              Home
-            </a>
-            <a href="/profile" className="hover:text-gray-400">
-              Profile
-            </a>
-            <a href="/messages" className="hover:text-gray-400">
-              Messages
-            </a>
-          </div>
-        </div>
+        <Sidebar />
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="flex-1 p-4">{children}</div>
+          <div className="overflow-y-auto">{children}</div>
         </Providers>
       </body>
     </html>
