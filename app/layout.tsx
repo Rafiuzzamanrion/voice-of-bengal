@@ -36,13 +36,14 @@ export default function RootLayout({
       <body
         suppressHydrationWarning={true}
         className={clsx(
-          "bg-background font-sans antialiased sm:flex h-screen",
+          "bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
-        <Sidebar />
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
-          <div className="overflow-y-auto">{children}</div>
+          <Sidebar>
+            <main className="flex-1">{children}</main>
+          </Sidebar>
         </Providers>
       </body>
     </html>

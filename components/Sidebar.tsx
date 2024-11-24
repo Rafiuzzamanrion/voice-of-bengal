@@ -1,18 +1,24 @@
 "use client";
-import Image from "next/image";
+
+import React, { ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { FaHome } from "react-icons/fa";
 
-const Sidebar = () => {
+interface SidebarProps {
+  children: ReactNode;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ children }) => {
   const pathName = usePathname();
-  const isActive = (path: string) => pathName === path;
+
+  const isActive = (path: string): boolean => pathName === path;
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {/* Sidebar */}
-      <div className="fixed bottom-0 w-full bg-gray-100 sm:static sm:w-32 sm:h-full sm:flex-shrink-0">
+      <div className="fixed bottom-0 w-full bg-gray-100 sm:fixed sm:w-32 sm:h-full sm:top-0 sm:left-0">
         <div className="flex sm:flex-col justify-around sm:justify-start sm:items-center p-4 space-x-3 sm:space-x-0 sm:space-y-6">
           {/* Account */}
           <Link
@@ -25,7 +31,6 @@ const Sidebar = () => {
               alt="Account"
               width={30}
               height={30}
-              quality={100}
               className="object-cover"
               src="/Test Account.png"
             />
@@ -52,7 +57,6 @@ const Sidebar = () => {
               alt="Trending"
               width={30}
               height={30}
-              quality={100}
               className="object-cover"
               src="/Tranding.png"
             />
@@ -69,7 +73,6 @@ const Sidebar = () => {
               alt="Notification"
               width={30}
               height={30}
-              quality={100}
               className="object-cover"
               src="/Alarm.png"
             />
@@ -86,7 +89,6 @@ const Sidebar = () => {
               alt="Conflict"
               width={30}
               height={30}
-              quality={100}
               className="object-cover"
               src="/Conflict.png"
             />
@@ -103,13 +105,15 @@ const Sidebar = () => {
               alt="Settings"
               width={30}
               height={30}
-              quality={100}
               className="object-cover"
               src="/Settings.png"
             />
           </Link>
         </div>
       </div>
+
+      {/* Content */}
+      <div className="ml-0 sm:ml-32 flex-1 overflow-y-auto">{children}</div>
     </div>
   );
 };
