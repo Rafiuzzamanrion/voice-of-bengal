@@ -42,7 +42,9 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <Sidebar>
-            <main className="flex-1">{children}</main>
+            <main suppressHydrationWarning={true} className="flex-1">
+              {children}
+            </main>
           </Sidebar>
         </Providers>
       </body>

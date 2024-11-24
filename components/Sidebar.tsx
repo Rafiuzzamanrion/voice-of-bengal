@@ -1,30 +1,25 @@
 "use client";
-
-import React, { ReactNode } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React from "react";
 import { FaHome } from "react-icons/fa";
 
-interface SidebarProps {
-  children: ReactNode;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathName = usePathname();
 
   const isActive = (path: string): boolean => pathName === path;
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex h-screen">
       {/* Sidebar */}
-      <div className="fixed bottom-0 w-full bg-gray-100 sm:fixed sm:w-32 sm:h-full sm:top-0 sm:left-0">
+      <div className="fixed bottom-0 w-full bg-gray-200 sm:fixed sm:w-32 sm:h-full sm:top-0 sm:left-0">
         <div className="flex sm:flex-col justify-around sm:justify-start sm:items-center p-4 space-x-3 sm:space-x-0 sm:space-y-6">
           {/* Account */}
           <Link
             href="/account"
             className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all ${
-              isActive("/account") ? "bg-gray-400" : "bg-gray-100"
+              isActive("/account") ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <Image
@@ -40,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           <Link
             href="/"
             className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all ${
-              isActive("/") ? "bg-gray-400" : "bg-gray-100"
+              isActive("/") ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <FaHome size={30} />
@@ -50,7 +45,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           <Link
             href="/trending"
             className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all ${
-              isActive("/trending") ? "bg-gray-400" : "bg-gray-100"
+              isActive("/trending") ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <Image
@@ -66,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           <Link
             href="/notification"
             className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all ${
-              isActive("/notification") ? "bg-gray-400" : "bg-gray-100"
+              isActive("/notification") ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <Image
@@ -82,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           <Link
             href="/conflict"
             className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all ${
-              isActive("/conflict") ? "bg-gray-400" : "bg-gray-100"
+              isActive("/conflict") ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <Image
@@ -98,7 +93,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
           <Link
             href="/settings"
             className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all ${
-              isActive("/settings") ? "bg-gray-400" : "bg-gray-100"
+              isActive("/settings") ? "bg-gray-400" : "bg-gray-200"
             }`}
           >
             <Image
@@ -113,7 +108,12 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
       </div>
 
       {/* Content */}
-      <div className="ml-0 sm:ml-32 flex-1 overflow-y-auto">{children}</div>
+      <div
+        suppressHydrationWarning={true}
+        className="ml-0 sm:ml-32 flex-1 relative overflow-y-auto p-4 mb-24 lg:mb-0"
+      >
+        {children}
+      </div>
     </div>
   );
 };
