@@ -5,7 +5,14 @@ import Image from "next/image";
 import { Input } from "@nextui-org/input";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
-import { Select, SelectItem } from "@nextui-org/react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 const Signup = () => {
   return (
     <div className="">
@@ -51,20 +58,15 @@ const Signup = () => {
               />
 
               <Input size="sm" type="text" variant="bordered" label="Gender" />
-              <Select
-                label="Test Select"
-                variant="bordered"
-                placeholder="Choose an option"
-              >
-                <SelectItem key="1" value="option-1">
-                  Option 1
-                </SelectItem>
-                <SelectItem key="2" value="option-2">
-                  Option 2
-                </SelectItem>
-                <SelectItem key="3" value="option-3">
-                  Option 3
-                </SelectItem>
+              <Select>
+                <SelectTrigger className="w-[400px] h-[48px]">
+                  <SelectValue placeholder="Theme" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                  <SelectItem value="system">System</SelectItem>
+                </SelectContent>
               </Select>
             </div>
           </div>
@@ -83,7 +85,13 @@ const Signup = () => {
             />
           </div>
           <h1>
-            Already have an account? <Link className="text-blue-400 border-b-2 border-blue-400" href={"/api/auth/login"}>Login</Link>
+            Already have an account?{" "}
+            <Link
+              className="text-blue-400 border-b-2 border-blue-400"
+              href={"/api/auth/login"}
+            >
+              Login
+            </Link>
           </h1>
           <Button className="w-[400px] bg-yellow-300 rounded-full mt-10">
             Send OTP
