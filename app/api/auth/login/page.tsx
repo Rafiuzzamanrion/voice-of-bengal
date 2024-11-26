@@ -43,14 +43,14 @@ const Login = () => {
             variant="bordered"
             label="Password"
           />
-          <Button className="w-[400px] bg-yellow-300 rounded-full my-6">
+          <Button variant='shadow' color="primary" className="w-[400px] bg-yellow-300 rounded-full my-6">
             Login
           </Button>
           <Link href={"/forgotPassword"} className="text-center">
             Forgot password ?
           </Link>
           <h1 className="text-center">
-            Don&apos; have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link
               className="text-blue-400 border-b-2 border-blue-400"
               href={"/api/auth/signup"}
