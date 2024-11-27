@@ -28,6 +28,7 @@ const Signup = () => {
           The Voice <br /> Of Bengal
         </h1>
       </div>
+      
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold my-10">Create New Account</h1>
         <form className="flex flex-col justify-center items-center">
